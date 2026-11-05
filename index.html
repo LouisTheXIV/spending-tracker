@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Monthly Expenses</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./app.js"></script>
+</head>
+
+<body>
+
+    <main class="app">
+
+        <header class="budget-overview">
+            <div class="spent">
+                <span>Spent</span>
+                <h1 id="total-spent">€0</h1>
+            </div>
+
+            <div class="remaining">
+                <span>Remaining</span>
+                <h1 id="remaining-budget">€400</h1>
+            </div>
+            <button id="open-settings" class="settings-button" aria-label="Settings">
+                ⚙
+            </button>
+        </header>
+
+        <!-- Calendar -->
+        <section class="calendar">
+
+            <div class="calendar-header">
+                <button id="prev-month">←</button>
+                <h2 id="month-year">November 2026</h2>
+                <button id="next-month">→</button>
+            </div>
+
+            <div class="weekdays">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+            </div>
+
+            <div class="calendar-grid" id="calendar">
+            </div>
+        <button id="add-expense">+ Add</button> 
+        </section>
+            <section class="expenses">
+
+                <div class="daily-total">
+                    <span>Spent today</span>
+                    <strong id="daily-total">€0.00</strong>
+                </div>
+
+                <div id="expense-list">
+                    <!-- Expenses generated here -->
+                </div>
+
+            </section>
+        
+
+        <!-- Add expense popup -->
+        <div class="modal" id="expense-modal">
+
+            <div class="modal-content">
+
+                <h2>New expense</h2>
+
+                <form id="expense-form">
+
+                    <label for="expense-name">Name</label>
+                    <input
+                        type="text"
+                        id="expense-name"
+                        placeholder="e.g. Groceries"
+                        required
+                    >
+
+                    <label for="expense-amount">Amount (€)</label>
+                    <input
+                        type="number"
+                        id="expense-amount"
+                        placeholder="e.g. 12.50"
+                        min="0.01"
+                        step="0.01"
+                        required
+                    >
+
+                    <div class="modal-buttons">
+                        <button type="button" id="cancel-expense">Cancel</button>
+                        <button type="submit">Save expense</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+<!-- Settings popup -->
+<div class="modal" id="settings-modal">
+
+    <div class="modal-content">
+
+        <h2>Settings</h2>
+
+        <form id="settings-form">
+
+            <label for="budget-input">
+                Monthly budget (€)
+            </label>
+
+            <input
+                type="number"
+                id="budget-input"
+                min="0.01"
+                step="0.01"
+                required
+            >
+
+            <label for="daily-limit-input">
+                Daily spending limit (€)
+            </label>
+
+            <input
+                type="number"
+                id="daily-limit-input"
+                min="0.01"
+                step="0.01"
+                required
+            >
+
+            <p class="settings-hint">
+                Automatically calculated from your monthly
+                budget and the number of days in the month.
+                You can change it manually.
+            </p>
+
+            <div class="modal-buttons">
+
+                <button type="button" id="close-settings">
+                    Cancel
+                </button>
+
+                <button type="button" id="save-settings">
+                    Save
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
